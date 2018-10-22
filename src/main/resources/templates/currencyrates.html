@@ -44,19 +44,25 @@
 <table class="table table-hover table-dark">
     <thead>
     <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Name</th>
+        <th scope="col">Euro Buy</th>
+        <th scope="col">Euro Sell</th>
+        <th scope="col">Dollar Buy</th>
+        <th scope="col">Dollar Sell</th>
+        <th scope="col">CHF Buy</th>
+        <th scope="col">CHF Sell</th>
     </tr>
     </thead>
     <tbody>
     <th:block th:each="rates : ${rates}">
     <tr>
         <th scope="row">1</th>
-        <th th:text="${rates.getEuro()}"></th>
-        <th th:text="${rates.getDollar()}"></th>
-        <th th:text="${rates.getChf()}"></th>
+        <th th:text="${rates.getEuroBuy()}"></th>
+        <th th:text="${rates.getEuroSell()}"></th>
+        <th th:text="${rates.getDollarBuy()}"></th>
+        <th th:text="${rates.getDollarSell()}"></th>
+        <th th:text="${rates.getChfBuy()}"></th>
+        <th th:text="${rates.getChfSell()}"></th>
         <!--<td>Mark</td>-->
         <!--<td>Otto</td>-->
         <!--<td>@mdo</td>-->

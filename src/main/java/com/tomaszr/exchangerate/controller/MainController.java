@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,16 +18,16 @@ public class MainController {
     }
 
     @GetMapping("/currencyrates")
-    public String currencyRates(Model model) {
+    public String currencyRates(Model model) throws IOException {
         List<CurrencyRates> currencyRatesList=new ArrayList<>();
 
         CurrencyRates currencyRates1 = new CurrencyRates();
         CurrencyRates currencyRates2 = new CurrencyRates();
         CurrencyRates currencyRates3 = new CurrencyRates();
 
-        currencyRates1.readCurrency();
-        currencyRates2.readCurrency();
-        currencyRates3.readCurrency();
+        currencyRates1.readCurrencyAlior();
+        currencyRates2.readCurrencyAlior();
+        currencyRates3.readCurrencyAlior();
 
         currencyRatesList.add(currencyRates1);
         currencyRatesList.add(currencyRates2);
