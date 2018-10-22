@@ -56,7 +56,8 @@
     <tbody>
     <th:block th:each="rates : ${rates}">
     <tr>
-        <th scope="row">1</th>
+        <!--<th scope="row">1</th>-->
+        <th th:text="${rates.getCantorName()}"></th>
         <th th:text="${rates.getEuroBuy()}"></th>
         <th th:text="${rates.getEuroSell()}"></th>
         <th th:text="${rates.getDollarBuy()}"></th>

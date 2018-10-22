@@ -21,17 +21,17 @@ public class MainController {
     public String currencyRates(Model model) throws IOException {
         List<CurrencyRates> currencyRatesList=new ArrayList<>();
 
-        CurrencyRates currencyRates1 = new CurrencyRates();
-        CurrencyRates currencyRates2 = new CurrencyRates();
-        CurrencyRates currencyRates3 = new CurrencyRates();
+        CurrencyRates currencyRatesAlior = new CurrencyRates();
+        CurrencyRates currencyRatesCinkciarz = new CurrencyRates();
+        CurrencyRates currencyRatesWalutomat = new CurrencyRates();
 
-        currencyRates1.readCurrencyAlior();
-        currencyRates2.readCurrencyAlior();
-        currencyRates3.readCurrencyAlior();
+        currencyRatesAlior.readCurrencyAlior();
+        currencyRatesCinkciarz.readCurrencyCinkciarz();
+        currencyRatesWalutomat.readCurrencyWalutomat();
 
-        currencyRatesList.add(currencyRates1);
-        currencyRatesList.add(currencyRates2);
-        currencyRatesList.add(currencyRates3);
+        currencyRatesList.add(currencyRatesAlior);
+        currencyRatesList.add(currencyRatesCinkciarz);
+        currencyRatesList.add(currencyRatesWalutomat);
 
 //        System.out.println(currencyRates1.getEur());
 
