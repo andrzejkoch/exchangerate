@@ -24,14 +24,17 @@ public class MainController {
         CurrencyRates currencyRatesAlior = new CurrencyRates();
         CurrencyRates currencyRatesCinkciarz = new CurrencyRates();
         CurrencyRates currencyRatesWalutomat = new CurrencyRates();
+        CurrencyRates currencyRatesInternetowyKantor = new CurrencyRates();
 
         currencyRatesAlior.readCurrencyAlior();
         currencyRatesCinkciarz.readCurrencyCinkciarz();
         currencyRatesWalutomat.readCurrencyWalutomat();
+        currencyRatesInternetowyKantor.readCurrencyInternetowyKantor();
 
         currencyRatesList.add(currencyRatesAlior);
         currencyRatesList.add(currencyRatesCinkciarz);
         currencyRatesList.add(currencyRatesWalutomat);
+        currencyRatesList.add(currencyRatesInternetowyKantor);
 
 //        System.out.println(currencyRates1.getEur());
 

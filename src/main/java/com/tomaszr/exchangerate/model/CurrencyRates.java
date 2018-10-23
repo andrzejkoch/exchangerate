@@ -8,7 +8,6 @@ import org.jsoup.nodes.Document;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.DecimalFormat;
 
 public class CurrencyRates {
     @Getter
@@ -71,7 +70,7 @@ public class CurrencyRates {
             e.printStackTrace();
         }
 
-        cantorName = "Alior";
+        cantorName = "Alior Kantor";
         String htmlDoc = doc.body().text();
 
         int currencyIndex = htmlDoc.indexOf("EUR");
@@ -122,4 +121,36 @@ public class CurrencyRates {
         chfBuy=roundValue(chfBuy,4);
         return true;
     }
+
+    public boolean readCurrencyInternetowyKantor() {
+        Document doc = null;
+
+        try {
+            doc = Jsoup.connect("https://internetowykantor.pl/kursy-walut/").get();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        cantorName = "Internetowykantor.pl";
+        String htmlDoc = doc.body().text();
+        int currencyIndex = htmlDoc.indexOf("EUR Euro");
+        euroBuy = Double.parseDouble((htmlDoc.substring(currencyIndex + 9, currencyIndex + 15)).replace(',', '.'));
+        euroBuy = roundValue(euroBuy, 4);
+        euroSell = Double.parseDouble((htmlDoc.substring(currencyIndex + 16, currencyIndex + 22)).replace(',', '.'));
+        euroSell=roundValue(euroSell,4);
+
+        currencyIndex = htmlDoc.indexOf("USD Dolar amerykański");
+        dollarBuy = Double.parseDouble((htmlDoc.substring(currencyIndex + 22, currencyIndex + 28)).replace(',', '.'));
+        dollarBuy=roundValue(dollarBuy,4);
+        dollarSell = Double.parseDouble((htmlDoc.substring(currencyIndex + 29, currencyIndex + 35)).replace(',', '.'));
+        dollarSell=roundValue(dollarSell,4);
+
+        currencyIndex = htmlDoc.indexOf("CHF Frank szwajcarski");
+        chfBuy = Double.parseDouble((htmlDoc.substring(currencyIndex + 22, currencyIndex + 28)).replace(',', '.'));
+        chfBuy=roundValue(chfBuy,4);
+        chfSell = Double.parseDouble((htmlDoc.substring(currencyIndex + 29, currencyIndex + 35)).replace(',', '.'));
+        chfSell=roundValue(chfSell,4);
+        return true;
+    }
+
 }
