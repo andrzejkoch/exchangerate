@@ -19,7 +19,7 @@ public class MainController {
 
     @GetMapping("/currencyrates")
     public String currencyRates(Model model) throws IOException {
-        List<CurrencyRates> currencyRatesList=new ArrayList<>();
+        List<CurrencyRates> currencyRatesList = new ArrayList<>();
 
         CurrencyRates currencyRatesAlior = new CurrencyRates();
         CurrencyRates currencyRatesCinkciarz = new CurrencyRates();
@@ -38,11 +38,14 @@ public class MainController {
 
 //        System.out.println(currencyRates1.getEur());
 
-        model.addAttribute("rates",currencyRatesList );
+        model.addAttribute("rates", currencyRatesList);
 
         return "currencyrates";
     }
 
-
+    @GetMapping("/contact")
+    public String contact() {
+        return "contact";
+    }
 }
 
