@@ -29,9 +29,19 @@ public class CurrencyRates {
     private double roundValue(double value, int places) {
         BigDecimal bd = new BigDecimal(value);
         bd = bd.setScale(places, RoundingMode.HALF_UP);
+
         return bd.doubleValue();
     }
 
+    public String getRoundCurrency(double value) {
+        String valueString = Double.toString(value);
+        if (valueString.length() < 6) {
+            for (int i = valueString.length(); i <6 ; i++) {
+                valueString=valueString.concat("0");
+            }
+        }
+        return valueString.substring(0, 6);
+    }
 
     public boolean readCurrencyCinkciarz() throws IOException {
         Document doc = null;
@@ -46,7 +56,6 @@ public class CurrencyRates {
         String htmlDoc = doc.body().text();
 
         int currencyIndex = htmlDoc.indexOf("1 EUR");
-        String test = htmlDoc.substring(currencyIndex + 4, currencyIndex + 10);
         euroBuy = Double.parseDouble((htmlDoc.substring(currencyIndex + 6, currencyIndex + 12)).replace(',', '.'));
         euroSell = Double.parseDouble((htmlDoc.substring(currencyIndex + 13, currencyIndex + 19)).replace(',', '.'));
 
@@ -74,7 +83,6 @@ public class CurrencyRates {
         String htmlDoc = doc.body().text();
 
         int currencyIndex = htmlDoc.indexOf("EUR");
-        String test = htmlDoc.substring(currencyIndex + 4, currencyIndex + 10);
         euroBuy = Double.parseDouble(htmlDoc.substring(currencyIndex + 4, currencyIndex + 10));
         euroSell = Double.parseDouble(htmlDoc.substring(currencyIndex + 20, currencyIndex + 26));
 
@@ -106,19 +114,19 @@ public class CurrencyRates {
         euroSell = 1.002 * Double.parseDouble((htmlDoc.substring(currencyIndex + 10, currencyIndex + 16)).replace(',', '.'));
         euroSell = roundValue(euroSell, 4);
         euroBuy = 0.998 * Double.parseDouble((htmlDoc.substring(currencyIndex + 21, currencyIndex + 27)).replace(',', '.'));
-        euroBuy=roundValue(euroBuy,4);
+        euroBuy = roundValue(euroBuy, 4);
 
         currencyIndex = htmlDoc.indexOf("USD / PLN");
         dollarSell = 1.002 * Double.parseDouble((htmlDoc.substring(currencyIndex + 10, currencyIndex + 16)).replace(',', '.'));
-        dollarSell=roundValue(dollarSell,4);
+        dollarSell = roundValue(dollarSell, 4);
         dollarBuy = 0.998 * Double.parseDouble((htmlDoc.substring(currencyIndex + 21, currencyIndex + 27)).replace(',', '.'));
-        dollarBuy=roundValue(dollarBuy,4);
+        dollarBuy = roundValue(dollarBuy, 4);
 
         currencyIndex = htmlDoc.indexOf("CHF / PLN");
         chfSell = 1.002 * Double.parseDouble((htmlDoc.substring(currencyIndex + 10, currencyIndex + 16)).replace(',', '.'));
-        chfSell=roundValue(chfSell,4);
+        chfSell = roundValue(chfSell, 4);
         chfBuy = 0.998 * Double.parseDouble((htmlDoc.substring(currencyIndex + 21, currencyIndex + 27)).replace(',', '.'));
-        chfBuy=roundValue(chfBuy,4);
+        chfBuy = roundValue(chfBuy, 4);
         return true;
     }
 
@@ -137,19 +145,19 @@ public class CurrencyRates {
         euroBuy = Double.parseDouble((htmlDoc.substring(currencyIndex + 9, currencyIndex + 15)).replace(',', '.'));
         euroBuy = roundValue(euroBuy, 4);
         euroSell = Double.parseDouble((htmlDoc.substring(currencyIndex + 16, currencyIndex + 22)).replace(',', '.'));
-        euroSell=roundValue(euroSell,4);
+        euroSell = roundValue(euroSell, 4);
 
         currencyIndex = htmlDoc.indexOf("USD Dolar amerykański");
         dollarBuy = Double.parseDouble((htmlDoc.substring(currencyIndex + 22, currencyIndex + 28)).replace(',', '.'));
-        dollarBuy=roundValue(dollarBuy,4);
+        dollarBuy = roundValue(dollarBuy, 4);
         dollarSell = Double.parseDouble((htmlDoc.substring(currencyIndex + 29, currencyIndex + 35)).replace(',', '.'));
-        dollarSell=roundValue(dollarSell,4);
+        dollarSell = roundValue(dollarSell, 4);
 
         currencyIndex = htmlDoc.indexOf("CHF Frank szwajcarski");
         chfBuy = Double.parseDouble((htmlDoc.substring(currencyIndex + 22, currencyIndex + 28)).replace(',', '.'));
-        chfBuy=roundValue(chfBuy,4);
+        chfBuy = roundValue(chfBuy, 4);
         chfSell = Double.parseDouble((htmlDoc.substring(currencyIndex + 29, currencyIndex + 35)).replace(',', '.'));
-        chfSell=roundValue(chfSell,4);
+        chfSell = roundValue(chfSell, 4);
         return true;
     }
 

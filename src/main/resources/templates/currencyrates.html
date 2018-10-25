@@ -116,15 +116,12 @@
     <tr>
         <!--<th scope="row">1</th>-->
         <th th:text="${rates.getCantorName()}"></th>
-        <th th:text="${rates.getEuroBuy()}"></th>
-        <th th:text="${rates.getEuroSell()}"></th>
-        <th th:text="${rates.getDollarBuy()}"></th>
-        <th th:text="${rates.getDollarSell()}"></th>
-        <th th:text="${rates.getChfBuy()}"></th>
-        <th th:text="${rates.getChfSell()}"></th>
-        <!--<td>Mark</td>-->
-        <!--<td>Otto</td>-->
-        <!--<td>@mdo</td>-->
+        <th th:text="${rates.getRoundCurrency(rates.getEuroBuy())}"></th>
+        <th th:text="${rates.getRoundCurrency(rates.getEuroSell())}"></th>
+        <th th:text="${rates.getRoundCurrency(rates.getDollarBuy())}"></th>
+        <th th:text="${rates.getRoundCurrency(rates.getDollarSell())}"></th>
+        <th th:text="${rates.getRoundCurrency(rates.getChfBuy())}"></th>
+        <th th:text="${rates.getRoundCurrency(rates.getChfSell())}"></th>
     </tr>
     </th:block>
     <!--<tr>-->
