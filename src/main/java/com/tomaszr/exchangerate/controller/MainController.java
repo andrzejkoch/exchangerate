@@ -4,6 +4,8 @@ import com.tomaszr.exchangerate.model.CurrencyRates;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -42,6 +44,27 @@ public class MainController {
 
 
         return "currencyrates";
+    }
+
+    @PostMapping("/contact")
+//    @ResponseBody
+    public String contact(@RequestParam(value = "name") String nameParam,
+                          @RequestParam(value = "email") String emailParam,
+                          @RequestParam(value = "phone") String phoneParam,
+                          @RequestParam(value = "message") String messageParam) {
+//        Post post = new Post(titleParam, content);
+//        PostComment postComment = new PostComment();
+//        postComment.setComment(titleParam);
+//
+//        post.addComment(postComment);
+//        postRepository.save(post);
+
+        System.out.println(nameParam);
+        System.out.println(emailParam);
+        System.out.println(phoneParam);
+        System.out.println(messageParam);
+//        return "index";
+        return "contact";
     }
 
     @GetMapping("/contact")
