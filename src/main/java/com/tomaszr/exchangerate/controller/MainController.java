@@ -40,6 +40,7 @@ public class MainController {
 
         model.addAttribute("rates", currencyRatesList);
 
+
         return "currencyrates";
     }
 
