@@ -55,17 +55,17 @@ public class CurrencyRates {
         cantorName = "Cinkciarz";
         String htmlDoc = doc.body().text();
 
-        int currencyIndex = htmlDoc.indexOf("1 EUR");
-        euroBuy = Double.parseDouble((htmlDoc.substring(currencyIndex + 6, currencyIndex + 12)).replace(',', '.'));
-        euroSell = Double.parseDouble((htmlDoc.substring(currencyIndex + 13, currencyIndex + 19)).replace(',', '.'));
+        int currencyIndex = htmlDoc.indexOf("Euro 1 EUR");
+        euroBuy = Double.parseDouble((htmlDoc.substring(currencyIndex + 11, currencyIndex + 17)).replace(',', '.'));
+        euroSell = Double.parseDouble((htmlDoc.substring(currencyIndex + 18, currencyIndex + 24)).replace(',', '.'));
 
-        currencyIndex = htmlDoc.indexOf("1 USD");
-        dollarBuy = Double.parseDouble((htmlDoc.substring(currencyIndex + 6, currencyIndex + 12)).replace(',', '.'));
-        dollarSell = Double.parseDouble((htmlDoc.substring(currencyIndex + 13, currencyIndex + 19)).replace(',', '.'));
+        currencyIndex = htmlDoc.indexOf("ski 1 USD");
+        dollarBuy = Double.parseDouble((htmlDoc.substring(currencyIndex + 10, currencyIndex + 16)).replace(',', '.'));
+        dollarSell = Double.parseDouble((htmlDoc.substring(currencyIndex + 17, currencyIndex + 23)).replace(',', '.'));
 
-        currencyIndex = htmlDoc.indexOf("1 CHF");
-        chfBuy = Double.parseDouble((htmlDoc.substring(currencyIndex + 6, currencyIndex + 12)).replace(',', '.'));
-        chfSell = Double.parseDouble((htmlDoc.substring(currencyIndex + 13, currencyIndex + 19)).replace(',', '.'));
+        currencyIndex = htmlDoc.indexOf("szwajcarski 1 CHF");
+        chfBuy = Double.parseDouble((htmlDoc.substring(currencyIndex + 18, currencyIndex + 24)).replace(',', '.'));
+        chfSell = Double.parseDouble((htmlDoc.substring(currencyIndex + 25, currencyIndex + 31)).replace(',', '.'));
 
         return true;
     }

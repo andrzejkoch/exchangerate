@@ -55,8 +55,6 @@ public class MainController {
         currencyRatesList.add(currencyRatesWalutomat);
         currencyRatesList.add(currencyRatesInternetowyKantor);
 
-//        System.out.println(currencyRates1.getEur());
-
         model.addAttribute("rates", currencyRatesList);
 
 
